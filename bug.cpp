@@ -3,34 +3,25 @@
 //
 
 #include <list>
+#include "bug.h"
 
-enum class Direction{
-    North = 1,
-    East = 2 ,
-    South  = 3 ,
-    West  =4
-};
+Bug::Bug(int bugId, int x, int y, Direction dir, int bugSize)
+        : id(bugId), position(std::make_pair(x, y)), direction(dir), size(bugSize), alive(true) {}
 
-class Bug{
-protected:
-    int id;
-    std:: pair<int,int> position;
-    Direction direction;
-    int size;
-    bool alive;
-    std::list<std::pair<int,int>> path;
-
-public:
-    Bug(int bugId, int x, int y, Direction dir, int bugSize);
-    virtual ~Bug() = default;
-
-    virtual void move() = 0;
-
-    bool isWayBlocked();
-};
-
-
-
-
+bool Bug::isWayBlocked() {
+    int boardSize = 20; // Assuming the board size is 20x20
+    switch (direction) {
+        case Direction::North:
+            return position.second == 0;
+        case Direction::East:
+            return position.first == boardSize - 1;
+        case Direction::South:
+            return position.second == boardSize - 1;
+        case Direction::West:
+            return position.first == 0;
+        default:
+            return false; // Unknown direction
+    }
+}
 
 #include "bug.h"
