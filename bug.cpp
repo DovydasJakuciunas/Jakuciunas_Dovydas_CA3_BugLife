@@ -6,10 +6,10 @@
 #include <sstream>
 #include "bug.h"
 
-Bug::Bug(char type, int bugId, int x, int y, Direction dir, int bugSize, int hop)
+bug::bug(char type, int bugId, int x, int y, Direction dir, int bugSize, int hop)
         : bugType(type), id(bugId), position(std::make_pair(x, y)), direction(dir), size(bugSize), hopLength(hop), alive(true) {}
 
-bool Bug::isWayBlocked() {
+bool bug::isWayBlocked() {
     int boardSize = 10; //Size of board is 10
     switch (direction) {
         case Direction::North:
@@ -25,7 +25,7 @@ bool Bug::isWayBlocked() {
     }
 }
 
-string Bug::record(){
+string bug::record(){
     ostringstream oss;
     oss <<bugType<< ";" << id << ";" << position.first << ";" << position.second<< ";" << size;
     if(bugType =='H'){
@@ -33,6 +33,10 @@ string Bug::record(){
     }
     oss << "\n";
     return oss.str();
+}
+
+bug::bug(int i, pair<int, int> pair1, int i1, int i2) {
+
 }
 
 #include "bug.h"

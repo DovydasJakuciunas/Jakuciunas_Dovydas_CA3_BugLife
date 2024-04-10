@@ -16,9 +16,11 @@ enum class Direction {
     West = 4
 };
 
-class Bug {
+class bug {
 
 protected:
+    bug(int i, pair<int, int> pair1, int i1, int i2);
+
     char bugType;
     int id;
     pair<int, int> position;
@@ -29,8 +31,8 @@ protected:
     list<std::pair<int, int>> path;
 
 public:
-    Bug(char type, int bugId, int x, int y, Direction dir, int bugSize, int hop = 0);
-    virtual ~Bug() = default;
+    bug(char type, int bugId, int x, int y, Direction dir, int bugSize, int hop = 0);
+    virtual ~bug() = default;
 
     virtual void move() = 0; // Pure virtual function
 
