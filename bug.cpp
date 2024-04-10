@@ -3,13 +3,14 @@
 //
 
 #include <list>
+#include <sstream>
 #include "bug.h"
 
-Bug::Bug(int bugId, int x, int y, Direction dir, int bugSize)
-        : id(bugId), position(std::make_pair(x, y)), direction(dir), size(bugSize), alive(true) {}
+Bug::Bug(char type, int bugId, int x, int y, Direction dir, int bugSize, int hop)
+        : bugType(type), id(bugId), position(std::make_pair(x, y)), direction(dir), size(bugSize), hopLength(hop), alive(true) {}
 
 bool Bug::isWayBlocked() {
-    int boardSize = 20; // Assuming the board size is 20x20
+    int boardSize = 10; //Size of board is 10
     switch (direction) {
         case Direction::North:
             return position.second == 0;
@@ -22,6 +23,16 @@ bool Bug::isWayBlocked() {
         default:
             return false; // Unknown direction
     }
+}
+
+string Bug::record(){
+    ostringstream oss;
+    oss <<bugType<< ";" << id << ";" << position.first << ";" << position.second<< ";" << size;
+    if(bugType =='H'){
+        oss<< ";" << hopLength;
+    }
+    oss << "\n";
+    return oss.str();
 }
 
 #include "bug.h"

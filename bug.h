@@ -36,6 +36,7 @@ public:
 
     bool isWayBlocked();
 
+    string record();
 };
 
 #endif //JAKUCIUNAS_DOVYDAS_CA3_BUGLIFE_BUG_H
