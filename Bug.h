@@ -5,8 +5,9 @@
 #ifndef JAKUCIUNAS_DOVYDAS_CA3_BUGLIFE_BUG_H
 #define JAKUCIUNAS_DOVYDAS_CA3_BUGLIFE_BUG_H
 
+#include <utility>
 
-class Bug {
+class Bug{
 
 };
 
