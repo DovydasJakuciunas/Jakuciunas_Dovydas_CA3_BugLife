@@ -19,7 +19,6 @@ enum class Direction {
 class bug {
 
 protected:
-    bug(int i, pair<int, int> pair1, int i1, int i2);
 
     char bugType;
     int id;
@@ -37,7 +36,6 @@ public:
     virtual void move() = 0; // Pure virtual function
 
     bool isWayBlocked();
-
     string record();
 };
 
