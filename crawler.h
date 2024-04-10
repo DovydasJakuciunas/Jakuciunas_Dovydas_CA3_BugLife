@@ -10,11 +10,8 @@
 class crawler : public bug{
 
 public :
-    crawler(int id, pair<int,int> position,int dir, int size);
-
-    crawler(int id);
-
-    void move()override;
+    crawler(char type, int bugId, int x, int y, Direction dir, int bugSize);
+    void move() override;
 };
 
 

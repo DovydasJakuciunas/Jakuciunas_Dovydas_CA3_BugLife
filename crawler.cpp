@@ -5,11 +5,21 @@ using namespace std;
 
 #include "crawler.h"
 
-crawler::crawler(int id, pair<int, int> position, int dir, int size) : bug(id, position, dir, size) {
-    this->id = id;
-    this->position = position;
-    this->dir = dir;
-    this->size = size;
-    this->alive = true;
-
+crawler :: crawler(char type, int bugId, int x, int y, Direction dir, int bugSize)
+    : bug(type,bugId,x,y,dir,bugSize){
 }
+
+void crawler::move() {
+    switch (direction) {
+        case Direction::North:
+            position.second--;
+            break;
+        case Direction::East:
+            position.first++;
+            break;
+
+    }
+}
+
+
+

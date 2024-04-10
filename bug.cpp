@@ -35,8 +35,6 @@ string bug::record(){
     return oss.str();
 }
 
-bug::bug(int i, pair<int, int> pair1, int i1, int i2) {
 
-}
 
 #include "bug.h"
