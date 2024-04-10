@@ -7,9 +7,12 @@
 
 #include <utility>
 
-class Bug{
+Bug::Bug(int bugId, int x, int y, Direction dir, int bugSize) {
 
-};
+}
 
+bool Bug::isWayBlocked() {
+    return false;
+}
 
 #endif //JAKUCIUNAS_DOVYDAS_CA3_BUGLIFE_BUG_H
