@@ -32,7 +32,7 @@ public:
     bug(char type, int bugId, pair<int, int> position, Direction dir, int bugSize);
     virtual ~bug() = default;   //Deconstructor
 
-    virtual void move() = 0; // Pure virtual function
+    virtual void move() = 0; //  Pure virtual function
 
     bool isWayBlocked();
     string toString();
