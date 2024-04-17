@@ -5,9 +5,9 @@ using namespace std;
 
 #include "crawler.h"
 
-crawler :: crawler(char type, int bugId, int x, int y, Direction dir, int bugSize)
-    : bug(type,bugId,x,y,dir,bugSize){
-}
+
+
+
 void crawler::move() {
     // Move one unit in the current direction
     switch (direction) {
@@ -25,16 +25,18 @@ void crawler::move() {
             break;
     }
 
-    // Check if the way is blocked
-    if (isWayBlocked()) {
-        // Change direction until a clear path is found
-        for (int newDir = 1; newDir <= 4; ++newDir) {
-            direction = static_cast<Direction>(newDir);
-            if (!isWayBlocked())
-                break;
-        }
-    }
+
 }
+
+crawler::crawler(int bugId1, pair<int, int> position, Direction dir1, int bugSize1) : bug('C', bugId1,
+                                                                                                      position, dir1,
+                                                                                                      bugSize1) {
+
+}
+
+
+
+
 
 
 

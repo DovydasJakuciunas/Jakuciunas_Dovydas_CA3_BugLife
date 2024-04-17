@@ -4,10 +4,11 @@
 
 #include <list>
 #include <sstream>
+#include <utility>
 #include "bug.h"
 
-bug::bug(char type, int bugId, int x, int y, Direction dir, int bugSize, int hop)
-        : bugType(type), id(bugId), position(std::make_pair(x, y)), direction(dir), size(bugSize), hopLength(hop), alive(true) {}
+bug::bug(char type, int bugId, pair<int,int> position, Direction dir, int bugSize)
+        : bugType(type), id(bugId), position(std::move(position)), direction(dir), size(bugSize), alive(true) {}
 
 bool bug::isWayBlocked() {
     int boardSize = 10; //Size of board is 10
@@ -25,12 +26,10 @@ bool bug::isWayBlocked() {
     }
 }
 
-string bug::record(){
+string bug::toString() {
     ostringstream oss;
     oss <<bugType<< ";" << id << ";" << position.first << ";" << position.second<< ";" << size;
-    if(bugType =='H'){
-        oss<< ";" << hopLength;
-    }
+
     oss << "\n";
     return oss.str();
 }

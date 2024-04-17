@@ -10,13 +10,11 @@
 
 class hopper : public bug{
 private:
-    int hopLength{};
+    int hopLength;
 
 public:
-    hopper();
-    hopper(int id, pair<int,int> position, int dir, int size, int hopLength);
+    hopper(int bugId, pair<int, int> position, Direction dir, int bugSize,int hopLength);
     void move() override;
-    ~hopper();
 
 };
 

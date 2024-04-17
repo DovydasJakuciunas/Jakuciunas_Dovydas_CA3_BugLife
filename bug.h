@@ -25,18 +25,17 @@ protected:
     pair<int, int> position;
     Direction direction;
     int size;
-    int hopLength;
     bool alive;
     list<std::pair<int, int>> path;
 
 public:
-    bug(char type, int bugId, int x, int y, Direction dir, int bugSize, int hop = 0);
-    virtual ~bug() = default;
+    bug(char type, int bugId, pair<int, int> position, Direction dir, int bugSize);
+    virtual ~bug() = default;   //Deconstructor
 
     virtual void move() = 0; // Pure virtual function
 
     bool isWayBlocked();
-    string record();
+    string toString();
 };
 
 #endif //JAKUCIUNAS_DOVYDAS_CA3_BUGLIFE_BUG_H
