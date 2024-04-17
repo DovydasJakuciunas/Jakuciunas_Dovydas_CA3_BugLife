@@ -3,4 +3,4 @@ project(Jakuciunas_Dovydas_CA3_BugLife)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(Jakuciunas_Dovydas_CA3_BugLife main.cpp bug.cpp crawler.h crawler.cpp)
+add_executable(Jakuciunas_Dovydas_CA3_BugLife main.cpp bug.cpp crawler.h crawler.cpp hopper.h)

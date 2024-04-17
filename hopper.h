@@ -1,0 +1,14 @@
+//
+// Created by dovyj on 17/04/2024.
+//
+
+#ifndef JAKUCIUNAS_DOVYDAS_CA3_BUGLIFE_HOPPER_H
+#define JAKUCIUNAS_DOVYDAS_CA3_BUGLIFE_HOPPER_H
+
+
+class hopper {
+
+};
+
+
+#endif //JAKUCIUNAS_DOVYDAS_CA3_BUGLIFE_HOPPER_H
