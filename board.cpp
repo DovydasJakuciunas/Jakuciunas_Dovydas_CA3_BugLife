@@ -7,6 +7,7 @@
 #include <sstream>
 #include "board.h"
 #include "crawler.cpp"
+#include "hopper.h"
 
 using namespace std;
 
@@ -47,11 +48,25 @@ int board::readFromFile() { //read from file
                 getline(ss,tempLine,';');
                 int size = stoi(tempLine);
 
-                bug* crawler = new crawler(id, make_pair(xCord,yCord),look,size);
+                crawler * crawler = new class crawler(id, make_pair(xCord,yCord),look,size);
 
             }
             else if (tempLine[0] == 'H')
             {
+                getline(ss,tempLine,';');
+                int id = stoi(tempLine);
+                getline(ss,tempLine,';');
+                int xCord = stoi(tempLine);
+                getline(ss,tempLine,';');
+                int yCord = stoi(tempLine);
+                getline(ss,tempLine,';');
+                int dir = stoi(tempLine);
+                Direction look =setDirection(dir);
+                getline(ss,tempLine,';');
+                int size = stoi(tempLine);
+                getline(ss,tempLine,';');
+                int hopLength = stoi(tempLine);
+                hopper *hopper = new class hopper(id, make_pair(xCord, yCord), look, size, hopLength);
 
             }
             else
