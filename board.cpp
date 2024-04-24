@@ -12,7 +12,8 @@
 using namespace std;
 
 
-
-
-
-
+void board::tap() {
+    for (Bug* bug : bug_vector) {
+        bug->move();
+    }
+}

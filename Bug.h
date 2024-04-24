@@ -34,8 +34,9 @@ public:
     virtual ~Bug() = default;
 
     virtual void move() = 0; //  Pure virtual function
-    bool isWayBlocked();
+    virtual bool isWayBlocked() = 0;
     virtual string toString();
+    virtual void changeDirection();
 
     //Function 3
     int getID() const;

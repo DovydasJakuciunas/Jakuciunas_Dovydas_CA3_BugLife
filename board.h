@@ -12,7 +12,7 @@
 class board {
     vector<Bug*> bug_vector;
 
-
+    void tap();
 
 };
 

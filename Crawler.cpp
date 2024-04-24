@@ -11,12 +11,10 @@ using namespace std;
 
 void Crawler::move() {
 
-    if (isWayBlocked())
-    {
 
-    }
-    else{
-        // Move one unit in the current direction
+    while(!isWayBlocked())
+    {
+       void changeDirection();
         switch (direction) {
             case Direction::North:
                 position.second--;
@@ -32,9 +30,6 @@ void Crawler::move() {
                 break;
         }
     }
-
-
-
 }
 
 Crawler::Crawler(int bugId1, pair<int, int> position, Direction dir1, int bugSize1) : Bug('C', bugId1,
@@ -60,10 +55,35 @@ string Crawler::toString() {
 
     return ss.str();
 }
-
 bool Crawler::isWayBlocked() {
-    return Bug::isWayBlocked();
+
+
+    switch (direction) {
+        case Direction::North:
+            if (position.second == 0){
+                return false;
+            }
+            else{return true;}
+        case Direction::South: if (position.second == 9){
+                return false;
+            }
+            else{return true;}
+        case Direction::East: if (position.first == 9){
+                return false;
+            }
+            else {return true;}
+        case Direction::West: if (position.first == 0){
+                return false;
+            }
+            else{ return true;}
+
+    }
+
 }
+
+
+
+
 
 
 
