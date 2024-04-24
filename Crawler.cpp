@@ -3,12 +3,14 @@
 //
 using namespace std;
 
+#include <sstream>
 #include "Crawler.h"
 
 
 
 
 void Crawler::move() {
+
     // Move one unit in the current direction
     switch (direction) {
         case Direction::North:
@@ -36,6 +38,20 @@ Crawler::Crawler(int bugId1, pair<int, int> position, Direction dir1, int bugSiz
     this->direction = dir1;
     this-> size = bugSize1;
 
+}
+
+string Crawler::toString() {
+    stringstream ss; //allows String to be treated as Stream
+    ss<< id<<" Crawler (" << position.first << "," << position.second << ") Size: " << size;
+    switch (direction) {
+        case Direction::North: ss<<" ,North"; break;
+        case Direction::South: ss<<" ,South"; break;
+        case Direction::East: ss<<" ,East"; break;
+        case Direction::West: ss<<" ,West"; break;
+    }
+    ss << (alive?" Alive" : " Dead");
+
+    return ss.str();
 }
 
 

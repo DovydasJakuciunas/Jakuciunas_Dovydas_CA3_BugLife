@@ -36,7 +36,8 @@ public:
     virtual void move() = 0; //  Pure virtual function
 
     bool isWayBlocked();
-    string toString();
+
+    virtual string toString();
 };
 
 #endif //JAKUCIUNAS_DOVYDAS_CA3_BUGLIFE_BUG_H

@@ -11,6 +11,7 @@ Direction setDirection(int num);
 int main() {
 
     readFromFile();
+
 }
 
 void readFromFile() {
@@ -26,7 +27,6 @@ void readFromFile() {
             string tempLine; // creates a variable to store each word we read in from the file.
             stringstream ss(line);  //Allows string to be treated as stream
             getline(ss,tempLine,';');
-            cout<<"File Opened"<<endl;
             if (tempLine[0] == 'C')
             {
                 getline(ss,tempLine,';');
@@ -42,7 +42,7 @@ void readFromFile() {
                 int size = stoi(tempLine);
 
                 Bug * pCrawler = new Crawler(id, make_pair(xCord, yCord), look, size);
-
+                bug_vector.push_back(pCrawler);
             }
 
             else if (tempLine[0] == 'H')
@@ -62,7 +62,7 @@ void readFromFile() {
                 int hopLength = stoi(tempLine);
 
                 Bug * pHopper = new Hopper(id, make_pair(xCord, yCord), look, size, hopLength);
-
+                bug_vector.push_back(pHopper);
             }
             else
             {
@@ -75,6 +75,11 @@ void readFromFile() {
     else
     {
         cout << "Unable to open file" <<endl;
+    }
+
+    for(Bug* bug: bug_vector)
+    {
+        cout << bug->toString() << endl;
     }
 }
 

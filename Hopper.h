@@ -15,6 +15,7 @@ private:
 public:
     Hopper(int bugId, pair<int, int> position, Direction dir, int bugSize, int hopLength);
     void move() override;
+    string toString() override;
 
 };
 

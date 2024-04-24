@@ -27,11 +27,7 @@ bool Bug::isWayBlocked() {
 }
 
 string Bug::toString() {
-    ostringstream oss;
-    oss <<bugType<< ";" << id << ";" << position.first << ";" << position.second<< ";" << size;
 
-    oss << "\n";
-    return oss.str();
 }
 
 
