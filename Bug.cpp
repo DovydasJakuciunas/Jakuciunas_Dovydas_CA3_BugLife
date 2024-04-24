@@ -13,7 +13,7 @@ Bug::Bug(char type, int bugId, pair<int,int> position, Direction dir, int bugSiz
         : bugType(type), id(bugId), position(std::move(position)), direction(dir), size(bugSize), alive(true) {}
 
 bool Bug::isWayBlocked() {
-    int boardSize = 10; //Size of board is 10
+    int boardSize = 10; //Size of Board is 10
     switch (direction) {
         case Direction::North:
             return position.second == 0;

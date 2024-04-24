@@ -51,3 +51,30 @@ void Hopper::move() {
 
 }
 
+bool Hopper::isWayBlocked() {
+
+
+    switch (direction) {
+        case Direction::North:
+            if (position.second == 0){
+                return false;
+            }
+            else{return true;}
+        case Direction::South: if (position.second == 9){
+                return false;
+            }
+            else{return true;}
+        case Direction::East: if (position.first == 9){
+                return false;
+            }
+            else {return true;}
+        case Direction::West: if (position.first == 0){
+                return false;
+            }
+            else{ return true;}
+
+    }
+
+}
+
+
