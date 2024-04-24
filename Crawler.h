@@ -5,12 +5,12 @@
 #ifndef JAKUCIUNAS_DOVYDAS_CA3_BUGLIFE_CRAWLER_H
 #define JAKUCIUNAS_DOVYDAS_CA3_BUGLIFE_CRAWLER_H
 
-#include "bug.h"
+#include "Bug.h"
 
-class crawler : public bug{
+class Crawler : public Bug {
 
 public :
-    crawler(int bugId1, pair<int, int> position, Direction dir1, int bugSize1);
+    Crawler(int bugId1, pair<int, int> position, Direction dir1, int bugSize1);
     void move() override;
 
 

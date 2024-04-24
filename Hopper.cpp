@@ -2,10 +2,10 @@
 // Created by dovyj on 17/04/2024.
 //
 
-#include "hopper.h"
+#include "Hopper.h"
 
 
-hopper::hopper(int bugId, pair<int, int> position, Direction dir, int bugSize, int hopLength) : bug('H', bugId,
+Hopper::Hopper(int bugId, pair<int, int> position, Direction dir, int bugSize, int hopLength) : Bug('H', bugId,
                                                                                                     position, dir,
                                                                                                     bugSize){
     this->hopLength = hopLength;
@@ -13,7 +13,7 @@ hopper::hopper(int bugId, pair<int, int> position, Direction dir, int bugSize, i
 }
 
 
-void hopper::move() {
+void Hopper::move() {
     // Move hopLength units in the current direction
     switch (direction) {
         case Direction::North:

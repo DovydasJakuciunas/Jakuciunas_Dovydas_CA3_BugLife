@@ -5,12 +5,12 @@
 #include <list>
 #include <sstream>
 #include <utility>
-#include "bug.h"
+#include "Bug.h"
 
-bug::bug(char type, int bugId, pair<int,int> position, Direction dir, int bugSize)
+Bug::Bug(char type, int bugId, pair<int,int> position, Direction dir, int bugSize)
         : bugType(type), id(bugId), position(std::move(position)), direction(dir), size(bugSize), alive(true) {}
 
-bool bug::isWayBlocked() {
+bool Bug::isWayBlocked() {
     int boardSize = 10; //Size of board is 10
     switch (direction) {
         case Direction::North:
@@ -26,7 +26,7 @@ bool bug::isWayBlocked() {
     }
 }
 
-string bug::toString() {
+string Bug::toString() {
     ostringstream oss;
     oss <<bugType<< ";" << id << ";" << position.first << ";" << position.second<< ";" << size;
 
@@ -36,4 +36,4 @@ string bug::toString() {
 
 
 
-#include "bug.h"
+#include "Bug.h"

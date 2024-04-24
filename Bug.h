@@ -6,6 +6,7 @@
 #define JAKUCIUNAS_DOVYDAS_CA3_BUGLIFE_BUG_H
 
 #include <utility>
+#include <string>
 
 using namespace std;
 
@@ -16,7 +17,7 @@ enum class Direction {
     West = 4
 };
 
-class bug {
+class Bug {
 
 protected:
 
@@ -26,11 +27,11 @@ protected:
     Direction direction;
     int size;
     bool alive;
-    list<std::pair<int, int>> path;
+    //list<std::pair<int, int>> path;
 
 public:
-    bug(char type, int bugId, pair<int, int> position, Direction dir, int bugSize);
-    virtual ~bug() = default;   //Deconstructor
+    Bug(char type, int bugId, pair<int, int> position, Direction dir, int bugSize);
+    virtual ~Bug() = default;
 
     virtual void move() = 0; //  Pure virtual function
 

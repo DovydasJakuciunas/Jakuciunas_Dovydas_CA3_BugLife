@@ -7,14 +7,13 @@
 
 
 #include <vector>
-#include "bug.h"
-
-using namespace std;
+#include "Bug.h"
 
 class board {
-    vector<bug*> bug_vector;
+    vector<Bug*> bug_vector;
 
-    readFromFile();
+
+
 };
 
 

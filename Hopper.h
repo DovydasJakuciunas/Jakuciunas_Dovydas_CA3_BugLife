@@ -6,14 +6,14 @@
 #define JAKUCIUNAS_DOVYDAS_CA3_BUGLIFE_HOPPER_H
 
 
-#include "bug.h"
+#include "Bug.h"
 
-class hopper : public bug{
+class Hopper : public Bug {
 private:
     int hopLength;
 
 public:
-    hopper(int bugId, pair<int, int> position, Direction dir, int bugSize,int hopLength);
+    Hopper(int bugId, pair<int, int> position, Direction dir, int bugSize, int hopLength);
     void move() override;
 
 };

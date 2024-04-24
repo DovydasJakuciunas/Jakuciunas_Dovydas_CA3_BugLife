@@ -3,12 +3,12 @@
 //
 using namespace std;
 
-#include "crawler.h"
+#include "Crawler.h"
 
 
 
 
-void crawler::move() {
+void Crawler::move() {
     // Move one unit in the current direction
     switch (direction) {
         case Direction::North:
@@ -28,9 +28,13 @@ void crawler::move() {
 
 }
 
-crawler::crawler(int bugId1, pair<int, int> position, Direction dir1, int bugSize1) : bug('C', bugId1,
-                                                                                                      position, dir1,
-                                                                                                      bugSize1) {
+Crawler::Crawler(int bugId1, pair<int, int> position, Direction dir1, int bugSize1) : Bug('C', bugId1,
+                                                                                          position, dir1,
+                                                                                          bugSize1) {
+    this->id = bugId1;
+    this->position = position;
+    this->direction = dir1;
+    this-> size = bugSize1;
 
 }
 
