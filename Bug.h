@@ -34,10 +34,11 @@ public:
     virtual ~Bug() = default;
 
     virtual void move() = 0; //  Pure virtual function
-
     bool isWayBlocked();
-
     virtual string toString();
+
+    //Function 3
+    int getID() const;
 };
 
 #endif //JAKUCIUNAS_DOVYDAS_CA3_BUGLIFE_BUG_H

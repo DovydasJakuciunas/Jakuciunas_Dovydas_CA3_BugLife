@@ -7,17 +7,68 @@
 
 void readFromFile();
 Direction setDirection(int num);
+int mainMenu();
+
+vector<Bug*> bug_vector;
 
 int main() {
-
+    cout<< "Welcome to the BugLife Project"<<endl;
     readFromFile();
 
+
+    while(true){
+        int command = mainMenu();
+        if (command == 1)
+        {
+            for(Bug* bug: bug_vector)
+            {
+                cout << bug->toString() << endl;
+            }
+
+        }
+        else if (command == 2){
+            cout<<"Whats the ID of the Bug?"<<endl;
+            int id;
+            cin>>id;
+            for(Bug* bug: bug_vector)
+            {
+                if (bug->getID() == id)
+                {
+                    cout<< bug->toString()<<endl;
+                }
+            }
+        }
+        else if (command == 9)
+        {
+            cout<< "Thank you for Using the BugLife Project"<< endl;
+            break;
+        }
+        else{
+            cout<< "Invalid Command ";
+
+        }
+    }
+
+
+
+}
+
+int mainMenu() {
+    cout<< "Commands:"<<endl;
+    cout<<"Type 1: Display All Bugs"<< endl;
+    cout<<"Type 2: Display Bug by ID"<<endl;
+    cout<<"Type 9: Exit Project"<<endl;
+
+    int usersChoice;
+    cin>> usersChoice;
+
+    return usersChoice;
 }
 
 void readFromFile() {
     ifstream fin("bugs.txt");
 
-    vector<Bug*> bug_vector;
+
     if(fin)
     {
         string line;
@@ -77,10 +128,7 @@ void readFromFile() {
         cout << "Unable to open file" <<endl;
     }
 
-    for(Bug* bug: bug_vector)
-    {
-        cout << bug->toString() << endl;
-    }
+
 }
 
 Direction setDirection(int num) {

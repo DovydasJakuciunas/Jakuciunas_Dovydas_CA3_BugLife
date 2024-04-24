@@ -11,21 +11,28 @@ using namespace std;
 
 void Crawler::move() {
 
-    // Move one unit in the current direction
-    switch (direction) {
-        case Direction::North:
-            position.second--;
-            break;
-        case Direction::East:
-            position.first++;
-            break;
-        case Direction::South:
-            position.second++;
-            break;
-        case Direction::West:
-            position.first--;
-            break;
+    if (isWayBlocked())
+    {
+
     }
+    else{
+        // Move one unit in the current direction
+        switch (direction) {
+            case Direction::North:
+                position.second--;
+                break;
+            case Direction::East:
+                position.first++;
+                break;
+            case Direction::South:
+                position.second++;
+                break;
+            case Direction::West:
+                position.first--;
+                break;
+        }
+    }
+
 
 
 }
@@ -42,16 +49,20 @@ Crawler::Crawler(int bugId1, pair<int, int> position, Direction dir1, int bugSiz
 
 string Crawler::toString() {
     stringstream ss; //allows String to be treated as Stream
-    ss<< id<<" Crawler (" << position.first << "," << position.second << ") Size: " << size;
+    ss<< "ID: "<<id<<" Crawler ,Position(" << position.first << "," << position.second << "), Size: " << size;
     switch (direction) {
         case Direction::North: ss<<" ,North"; break;
         case Direction::South: ss<<" ,South"; break;
         case Direction::East: ss<<" ,East"; break;
         case Direction::West: ss<<" ,West"; break;
     }
-    ss << (alive?" Alive" : " Dead");
+    ss << (alive?" ,Alive" : " ,Dead");
 
     return ss.str();
+}
+
+bool Crawler::isWayBlocked() {
+    return Bug::isWayBlocked();
 }
 
 

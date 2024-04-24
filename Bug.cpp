@@ -30,6 +30,10 @@ string Bug::toString() {
 
 }
 
+int Bug::getID() const {
+    return this->id;
+
+}
 
 
 #include "Bug.h"
