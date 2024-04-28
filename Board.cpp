@@ -10,6 +10,8 @@
 #include "Crawler.h"
 #include "Hopper.h"
 
+void displayChoiceOfBoard();
+
 using namespace std;
 
 
@@ -60,6 +62,7 @@ void Board::displayBugById() {
 void Board::simulateDisplayBugById(){
     displayBugById();
 }
+
 Direction setDirection(int num) {
     if (num == 1) {
         return Direction::North;
@@ -70,6 +73,7 @@ Direction setDirection(int num) {
     } else if (num == 4){
         return Direction::West;
     }
+    return Direction::West;
 }
 
 void Board::readFromFile() {
@@ -136,6 +140,58 @@ void Board::readFromFile() {
 
 
 }
+
+Board initialiseBoard(){
+    displayChoiceOfBoard();
+    int choice = 0;
+    cout << "Please enter your choice: ";
+    cin >> choice;
+    while (choice < 1 || choice > 2)
+    {
+        cout << "Invalid choice. Please enter your choice:";
+        cin >> choice;
+    }
+
+    if (choice == 1)
+    {
+        cout << "Default Board Size\n"<<"Board Size 10x10\n" << endl;
+        return {};
+    }
+    else
+    {
+        int height = 0;
+        int width = 0;
+
+        cout << "Width: ";
+        cin >> width;
+
+        cout << "Height: ";
+        cin >> height;
+
+        return {width, height};
+    }
+}
+
+void displayChoiceOfBoard() {
+    cout << "1. Default Board Size"<< endl;
+    cout << "2. Custom Board Size"<< endl;
+}
+
+void Board::simulateInitialiseBoard() {
+    initialiseBoard();
+}
+
+Board::Board() {
+    this->height = 10;
+    this->width = 10;
+}
+
+Board::Board(int width, int height) {
+    this->width = width;
+    this->height = height;
+}
+
+
 
 
 

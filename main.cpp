@@ -25,12 +25,16 @@ int main() {
 }
 
 void Commands(Board* board) {
+
     while(true){
         int command = mainMenu();
-        if (command == 1)       board->simulateDisplayAllBugs();
+        if (command == 1) {
+            board-> simulateInitialiseBoard();
+        }
+        if (command == 2)       board->simulateDisplayAllBugs();
 
-        else if (command == 2)  board->simulateDisplayBugById();
-        else if(command == 3)
+        else if (command == 3)  board->simulateDisplayBugById();
+        else if(command == 4)
         {
             board->simulateTap();
         }
@@ -48,9 +52,10 @@ void Commands(Board* board) {
 
 int mainMenu() {
     cout<< "Commands:"<<endl;
-    cout<<"Type 1: Display All Bugs"<< endl;
-    cout<<"Type 2: Display Bug by ID"<<endl;
-    cout<<"Type 3: Tap The Board"<<endl;
+    cout<<"Type 1: Initialize Bug Board "<< endl;
+    cout<<"Type 2: Display All Bugs " << endl;
+    cout<<"Type 3: Display Bug by ID"<<endl;
+    cout<<"Type 4: Tap The Board"<<endl;
     cout<<"Type 9: Exit Project"<<endl;
 
     int usersChoice;

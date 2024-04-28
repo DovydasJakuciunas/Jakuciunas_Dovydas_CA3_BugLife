@@ -12,28 +12,41 @@
 class Board {
 private:
     vector<Bug*> bug_vector;
-
+    int width;
+    int height;
 
 protected:
 
 
 
-    //Function 1
-    void displayAllBugs();
+
     //Function 2
+    void displayAllBugs();
+    //Function 3
     void displayBugById();
+    //Function 4
     void tap();
 
 public:
+    //Constructors
+    Board();
+    Board(int width, int height);
+
+    //Printing Board
+
     void readFromFile();
 
     void simulateTap();
 
     explicit Board(vector<Bug*> bug_vector);
-    //Function 1
+    //Function 1 _ Simulate
     void simulateDisplayAllBugs();
-    //Function 2
+    //Function 2 _ Simulate
     void simulateDisplayBugById();
+    //Function 3 _ Simulate
+    void simulateInitialiseBoard();
+
+
 };
 
 
