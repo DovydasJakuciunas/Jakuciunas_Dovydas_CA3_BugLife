@@ -38,6 +38,10 @@ void Commands(Board* board) {
         {
             board->simulateTap();
         }
+        else if(command ==5)
+        {
+            board->printBoard();
+        }
         else if (command == 9)
         {
             cout<< "Thank you for Using the BugLife Project"<< endl;

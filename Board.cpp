@@ -26,14 +26,15 @@ void Board::tap() {
     displayAllBugs();
     cout<<endl;
 }
+void Board::simulateTap() {
+    tap();
+}
 
 Board::Board(vector<Bug *> bug_vector) {
 this->bug_vector = std::move(bug_vector);
 }
 
-void Board::simulateTap() {
- tap();
-}
+
 
 //Function 1
 void Board::displayAllBugs() {
@@ -63,6 +64,7 @@ void Board::simulateDisplayBugById(){
     displayBugById();
 }
 
+//Enum of Directions
 Direction setDirection(int num) {
     if (num == 1) {
         return Direction::North;
@@ -76,6 +78,7 @@ Direction setDirection(int num) {
     return Direction::West;
 }
 
+//Reading From File
 void Board::readFromFile() {
     ifstream fin("bugs.txt");
 
@@ -135,13 +138,14 @@ void Board::readFromFile() {
     }
     else
     {
-        cout << "Unable to open file" <<endl;
+        cout << "*********************Unable to open file*********************" <<endl;
     }
 
 
 }
 
-Board initialiseBoard(){
+//Function 1
+Board Board::initialiseBoard(){
     displayChoiceOfBoard();
     int choice = 0;
     cout << "Please enter your choice: ";
@@ -171,24 +175,55 @@ Board initialiseBoard(){
         return {width, height};
     }
 }
-
 void displayChoiceOfBoard() {
     cout << "1. Default Board Size"<< endl;
     cout << "2. Custom Board Size"<< endl;
 }
-
 void Board::simulateInitialiseBoard() {
-    initialiseBoard();
+    *this = initialiseBoard();
 }
 
+//Constructors
 Board::Board() {
     this->height = 10;
     this->width = 10;
 }
-
 Board::Board(int width, int height) {
     this->width = width;
     this->height = height;
+}
+
+//Printing The Board
+void Board::printBoard() {
+    for (int i = 0; i < height; ++i) //Prints Vertical Lines {
+        {
+        for (int j = 0; j < width; ++j) //Prints horizontal Lines
+            {
+                cout<<"+---";
+            }
+        cout<<"+"<<endl;
+        cout<<"|";
+        for (int j = 0; j< width; ++j){
+            bool isBug = false;
+            for(Bug* bug: bug_vector){
+                if(bug->getPosition().first == j && bug->getPosition().second == i){
+                    cout<<bug->getType()<<","<<bug->getID();
+                    isBug = true;
+                }
+            }
+            if (!isBug){
+                cout<<"   ";
+            }
+            cout<<"|";
+        }
+        cout<<endl;
+    }
+    for(int j = 0; j < width; j++) {
+        cout << "+---";
+    }
+    cout << "+" << endl;
+
+
 }
 
 

@@ -32,10 +32,6 @@ string Bug::toString() {
 
 }
 
-int Bug::getID() const {
-    return this->id;
-
-}
 
 void Bug::changeDirection() {
     srand(time(nullptr)); // use current time as seed for random generator
@@ -61,6 +57,19 @@ void Bug::changeDirection() {
     {
         this->direction = direction;
     }
+}
+
+pair<int, int> Bug::getPosition() {
+    return this->position;
+}
+
+
+char Bug::getType() const {
+    return this-> bugType;
+}
+
+int Bug::getID() const {
+    return this->id;
 }
 
 

@@ -12,8 +12,8 @@
 class Board {
 private:
     vector<Bug*> bug_vector;
-    int width;
-    int height;
+    int width{};
+    int height{};
 
 protected:
 
@@ -33,18 +33,23 @@ public:
     Board(int width, int height);
 
     //Printing Board
+    void printBoard();
 
     void readFromFile();
 
     void simulateTap();
 
     explicit Board(vector<Bug*> bug_vector);
-    //Function 1 _ Simulate
+
+    //Function 1 _ Simulate Board
+    static Board initialiseBoard();
+    //Function 2 _ Simulate Display All Bugs
     void simulateDisplayAllBugs();
-    //Function 2 _ Simulate
+    //Function 3 _ Simulate Display Bug by ID
     void simulateDisplayBugById();
-    //Function 3 _ Simulate
+    //Function 4 _ Simulate Tapping the Board
     void simulateInitialiseBoard();
+
 
 
 };

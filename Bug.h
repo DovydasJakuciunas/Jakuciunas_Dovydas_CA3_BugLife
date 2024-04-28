@@ -39,6 +39,11 @@ public:
     virtual void changeDirection();
 
     //Function 3
+
+    //Getter
+
+    pair<int, int> getPosition();
+    char getType() const;
     int getID() const;
 };
 
