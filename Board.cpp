@@ -152,13 +152,13 @@ Board Board::initialiseBoard(){
     cin >> choice;
     while (choice < 1 || choice > 2)
     {
-        cout << "Invalid choice. Please enter your choice:";
+        cout << "Invalid choice. Please enter your choice: ";
         cin >> choice;
     }
 
     if (choice == 1)
     {
-        cout << "Default Board Size\n"<<"Board Size 10x10\n" << endl;
+        cout << "Default Board Size" << endl;
         return {};
     }
     else
@@ -174,6 +174,7 @@ Board Board::initialiseBoard(){
 
         return {width, height};
     }
+
 }
 void displayChoiceOfBoard() {
     cout << "1. Default Board Size"<< endl;

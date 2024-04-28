@@ -25,31 +25,31 @@ int main() {
 }
 
 void Commands(Board* board) {
-
     while(true){
         int command = mainMenu();
-        if (command == 1) {
-            board-> simulateInitialiseBoard();
-        }
-        if (command == 2)       board->simulateDisplayAllBugs();
+        switch (command) {
+            case 1:
 
-        else if (command == 3)  board->simulateDisplayBugById();
-        else if(command == 4)
-        {
-            board->simulateTap();
-        }
-        else if(command ==5)
-        {
-            board->printBoard();
-        }
-        else if (command == 9)
-        {
-            cout<< "Thank you for Using the BugLife Project"<< endl;
-            break;
-        }
-        else{
-            cout<< "Invalid Command ";
-
+                board->simulateInitialiseBoard();
+                break;
+            case 2:
+                board->simulateDisplayAllBugs();
+                break;
+            case 3:
+                board->simulateDisplayBugById();
+                break;
+            case 4:
+                board->simulateTap();
+                break;
+            case 5:
+                board->printBoard();
+                break;
+            case 9:
+                cout<< "Thank you for Using the BugLife Project"<< endl;
+                return;
+            default:
+                cout<< "Invalid Command \n";
+                break;
         }
     }
 }

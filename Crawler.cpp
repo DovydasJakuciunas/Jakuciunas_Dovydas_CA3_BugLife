@@ -14,22 +14,23 @@ void Crawler::move(int boardX, int boardY) {
         switch (direction) {
             case Direction::North:
                 newPosition.second--;
+                position = newPosition;
                 break;
             case Direction::East:
                 newPosition.first++;
+                position = newPosition;
                 break;
             case Direction::South:
                 newPosition.second++;
+                position = newPosition;
                 break;
             case Direction::West:
                 newPosition.first--;
+                position = newPosition;
                 break;
         }
-        if (newPosition.first >= 0 && newPosition.first < boardX && newPosition.second >= 0 && newPosition.second < boardY) {
-            position = newPosition;
-        } else {
-            direction = static_cast<Direction>((static_cast<int>(direction) + 1) % 4);
-        }
+        position = newPosition;
+
     }
 }
 
@@ -56,28 +57,32 @@ string Crawler::toString() {
 
     return ss.str();
 }
-bool Crawler::isWayBlocked() {
 
+bool Crawler::isWayBlocked() {
 
     switch (direction) {
         case Direction::North:
             if (position.second == 0){
-                return false;
+                return true;
             }
+            break;
         case Direction::South: if (position.second == 9){
-                return false;
+                return true;
             }
+            break;
         case Direction::East: if (position.first == 9){
-                return false;
+                return true;
             }
+            break;
         case Direction::West: if (position.first == 0){
-                return false;
+                return true;
             }
+            break;
         default:
-            return true;
+            return false;
 
     }
-
+    return false;
 }
 
 
