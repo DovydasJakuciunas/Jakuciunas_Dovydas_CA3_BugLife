@@ -20,7 +20,7 @@ void Board::tap() {
     displayAllBugs();
     cout<<endl;
     for (Bug* bug : bug_vector) {
-        bug->move();
+        bug->move(width, height);
     }
     cout<<"After Tap"<< endl;
     displayAllBugs();
@@ -192,6 +192,7 @@ Board::Board(int width, int height) {
     this->width = width;
     this->height = height;
 }
+
 
 //Printing The Board
 void Board::printBoard() {

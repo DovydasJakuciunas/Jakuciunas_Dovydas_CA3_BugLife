@@ -9,6 +9,10 @@
 Hopper::Hopper(int bugId, pair<int, int> position, Direction dir, int bugSize, int hopLength) : Bug('H', bugId,
                                                                                                     position, dir,
                                                                                                     bugSize){
+    this->id = bugId;
+    this->position = position;
+    this->direction = dir;
+    this->size = bugSize;
     this->hopLength = hopLength;
 
 }
@@ -24,31 +28,6 @@ string Hopper::toString() {
     }
     ss << " " << ",Hop Length: " << hopLength << (alive ? " ,Alive" : " ,Dead") ;
     return ss.str();
-}
-
-
-void Hopper::move() {
-    while(!isWayBlocked())
-    {
-        // Move hopLength units in the current direction
-        switch (direction) {
-            case Direction::North:
-                position.second -= hopLength;
-                break;
-            case Direction::East:
-                position.first += hopLength;
-                break;
-            case Direction::South:
-                position.second += hopLength;
-                break;
-            case Direction::West:
-                position.first -= hopLength;
-                break;
-        }
-    }
-
-
-
 }
 
 bool Hopper::isWayBlocked() {
@@ -76,5 +55,84 @@ bool Hopper::isWayBlocked() {
     }
 
 }
+
+void Hopper::move(int BoardX, int BoardY) {
+    //print out it moved
+//    cout << "Hopper moved" << endl;
+
+    bool moved = false;
+
+    while (!moved)
+    {
+        switch (Direction(direction)) {
+            case Direction::North:
+                if (position.second == 0 )
+                {
+                    changeDirection();
+                }
+                else if (position.second - hopLength >= 0)
+                {
+                    position.second -= hopLength;
+                    moved = true;
+                }
+                else if (position.second - hopLength < 0)
+                {
+                    position.second = 0;
+                    moved = true;
+                }
+                break;
+            case Direction::South:
+                if (position.second == BoardY - 1)
+                {
+                    changeDirection();
+                }
+                else if (position.second + hopLength <= BoardY - 1)
+                {
+                    position.second += hopLength;
+                    moved = true;
+                }
+                else if (position.second + hopLength > BoardY - 1)
+                {
+                    position.second = BoardY - 1;
+                    moved = true;
+                }
+                break;
+            case Direction::West:
+                if (position.first == 0)
+                {
+                    changeDirection();
+                }
+                else if (position.first - hopLength >= 0)
+                {
+                    position.first -= hopLength;
+                    moved = true;
+                }
+                else if (position.first - hopLength < 0)
+                {
+                    position.first = 0;
+                    moved = true;
+                }
+                break;
+            case Direction::East:
+                if (position.first == BoardX - 1)
+                {
+                    changeDirection();
+                }
+                else if (position.first + hopLength <= BoardX - 1)
+                {
+                    position.first += hopLength;
+                    moved = true;
+                }
+                else if (position.first + hopLength > BoardX - 1)
+                {
+                    position.first = BoardX - 1;
+                    moved = true;
+                }
+                break;
+        }
+    }
+}
+
+
 
 

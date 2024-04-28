@@ -11,7 +11,7 @@ class Crawler : public Bug {
 
 public :
     Crawler(int bugId1, pair<int, int> position, Direction dir1, int bugSize1);
-    void move() override;
+    void move(int boardX, int boardY) override;
     string toString() override;
     bool isWayBlocked() override;
 

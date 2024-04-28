@@ -14,7 +14,7 @@ private:
 
 public:
     Hopper(int bugId, pair<int, int> position, Direction dir, int bugSize, int hopLength);
-    void move() override;
+    void move(int boardX, int boardY) override;
     string toString() override;
     bool isWayBlocked() override;
 

@@ -33,7 +33,7 @@ public:
     Bug(char type, int bugId, pair<int, int> position, Direction dir, int bugSize);
     virtual ~Bug() = default;
 
-    virtual void move() = 0; //  Pure virtual function
+    virtual void move(int boardX, int boardY) = 0; //  Pure virtual function
     virtual bool isWayBlocked() = 0;
     virtual string toString();
     virtual void changeDirection();

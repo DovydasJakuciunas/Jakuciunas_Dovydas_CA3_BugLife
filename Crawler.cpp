@@ -8,26 +8,27 @@ using namespace std;
 
 
 
-
-void Crawler::move() {
-
-
-    while(!isWayBlocked())
-    {
-       void changeDirection();
+void Crawler::move(int boardX, int boardY) {
+    while(!isWayBlocked()) {
+        pair<int, int> newPosition = position;
         switch (direction) {
             case Direction::North:
-                position.second--;
+                newPosition.second--;
                 break;
             case Direction::East:
-                position.first++;
+                newPosition.first++;
                 break;
             case Direction::South:
-                position.second++;
+                newPosition.second++;
                 break;
             case Direction::West:
-                position.first--;
+                newPosition.first--;
                 break;
+        }
+        if (newPosition.first >= 0 && newPosition.first < boardX && newPosition.second >= 0 && newPosition.second < boardY) {
+            position = newPosition;
+        } else {
+            direction = static_cast<Direction>((static_cast<int>(direction) + 1) % 4);
         }
     }
 }
@@ -63,19 +64,17 @@ bool Crawler::isWayBlocked() {
             if (position.second == 0){
                 return false;
             }
-            else{return true;}
         case Direction::South: if (position.second == 9){
                 return false;
             }
-            else{return true;}
         case Direction::East: if (position.first == 9){
                 return false;
             }
-            else {return true;}
         case Direction::West: if (position.first == 0){
                 return false;
             }
-            else{ return true;}
+        default:
+            return true;
 
     }
 

@@ -37,26 +37,17 @@ void Bug::changeDirection() {
     srand(time(nullptr)); // use current time as seed for random generator
     int randomValue = rand() % 4 + 1; // generates a random number between 1 and 4
 
-    if (randomValue == 1)
-    {
-        this->direction = Direction::West;
+    switch (randomValue) {
+        case 1:
+            direction = Direction::North;
+        case 2:
+            direction = Direction::East;
+        case 3:
+            direction = Direction::South;
+            case 4:
+                direction = Direction::West;
     }
-    else if(randomValue ==2)
-    {
-        this->direction = Direction::East;
-    }
-    else if (randomValue == 3)
-    {
-        this->direction = Direction::North;
-    }
-    else if (randomValue == 4)
-    {
-       this->direction = Direction::South;
-    }
-    else
-    {
-        this->direction = direction;
-    }
+
 }
 
 pair<int, int> Bug::getPosition() {
