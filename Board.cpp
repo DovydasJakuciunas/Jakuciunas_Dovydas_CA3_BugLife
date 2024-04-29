@@ -14,7 +14,7 @@ void displayChoiceOfBoard();
 
 using namespace std;
 
-
+//Function 4
 void Board::tap() {
    cout<<"****Tapping Board****"<<endl;
     for (Bug* bug : bug_vector) {
@@ -189,9 +189,31 @@ void displayChoiceOfBoard() {
 //Function 5
 void Board::displayLifeHistoryOfAllBugs() {
     for (Bug* bug : bug_vector) {
-        bug->printLifeHistory();
+        cout<<bug->printLifeHistory();
     }
 }
+//Function 6
+void Board::writeToFile() {
+    ofstream file("bug_life_history.out");
+    if (!file.is_open()) {
+        cerr << "Unable to open file" << endl;
+        return;
+    }
+
+    if (bug_vector.empty()) {
+        cerr << "Bug vector is empty" << endl;
+        return;
+    }
+
+    for (Bug* bug : bug_vector) {
+        file << bug->printLifeHistory() << endl;
+    }
+
+    file.close();
+    cout << "File Written Successfully" << endl;
+
+}
+
 
 //Constructors
 Board::Board() {
@@ -243,6 +265,10 @@ int Board::getBoardX() const {
 int Board::getBoardY() const {
     return height;
 }
+
+
+
+
 
 
 

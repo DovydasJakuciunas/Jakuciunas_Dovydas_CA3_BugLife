@@ -39,7 +39,7 @@ public:
     virtual void changeDirection();
 
 
-    void printLifeHistory();
+    string printLifeHistory();
 
     //Getter
     pair<int, int> getPosition();

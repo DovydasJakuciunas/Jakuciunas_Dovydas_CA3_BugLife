@@ -16,7 +16,7 @@ vector<Bug*> bug_vector_temp;
 
 int main() {
     cout<< "Welcome to the BugLife Project"<<endl;
-    Board* board = new Board(bug_vector_temp);
+    auto* board = new Board(bug_vector_temp);
     board->readFromFile();
 
     Commands(board);
@@ -47,6 +47,8 @@ void Commands(Board* board) {
                 break;
             case 8:
                 cout<< "Thank you for Using the BugLife Project"<< endl;
+                board->writeToFile();
+
                 return;
             default:
                 cout<< "Invalid Command \n";

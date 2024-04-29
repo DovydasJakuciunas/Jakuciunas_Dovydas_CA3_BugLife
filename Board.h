@@ -44,6 +44,9 @@ public:
     void simulateTap();
     //Function 5 _ Display Life History of All Bugs
     void displayLifeHistoryOfAllBugs();
+    //Function 6 _ Write to Files
+    void writeToFile();
+
 
     int getBoardX() const;
     int getBoardY() const;

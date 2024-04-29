@@ -58,12 +58,14 @@ int Bug::getID() const {
     return this->id;
 }
 
-void Bug::printLifeHistory() {
-     cout<< id << " " << (bugType == 'C' ? "Crawler" : "Hopper") << " Path: ";
+string Bug::printLifeHistory() {
+    ostringstream oss;
+    oss<< id << " " << (bugType == 'C' ? "Crawler" : "Hopper") << " Path: ";
     for (const auto& pos : path) {
-        cout << "(" << pos.first << "," << pos.second << ") ";   //Print the path of the bug
+        oss << "(" << pos.first << "," << pos.second << ") ";   //Print the path of the bug
     }
-    cout << (alive ? " Alive!" : " Eaten") << std::endl;    //Print if the bug is alive or eaten
+    oss << (alive ? " Alive!" : " Eaten") << endl;    //Print if the bug is alive or eaten
+    return oss.str();
 }
 
 list<pair<int, int>> Bug::getPath() {
