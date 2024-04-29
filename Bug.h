@@ -34,14 +34,12 @@ public:
     virtual ~Bug() = default;
 
     virtual void move(int boardX, int boardY) = 0; //  Pure virtual function
-    virtual bool isWayBlocked() = 0;
     virtual string toString();
     virtual void changeDirection();
 
     //Function 3
 
     //Getter
-
     pair<int, int> getPosition();
     char getType() const;
     int getID() const;

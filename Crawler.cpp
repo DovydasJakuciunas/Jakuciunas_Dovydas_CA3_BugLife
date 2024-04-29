@@ -9,28 +9,31 @@ using namespace std;
 
 
 void Crawler::move(int boardX, int boardY) {
-    while(!isWayBlocked()) {
-        pair<int, int> newPosition = position;
+    if (isWayBlocked(Board(boardX, boardY))) {
+        changeDirection();
+    } else {
         switch (direction) {
             case Direction::North:
-                newPosition.second--;
-                position = newPosition;
-                break;
-            case Direction::East:
-                newPosition.first++;
-                position = newPosition;
+                if (position.second > 0) {
+                    position.second--;
+                }
                 break;
             case Direction::South:
-                newPosition.second++;
-                position = newPosition;
+                if (position.second < boardY - 1) {
+                    position.second++;
+                }
+                break;
+            case Direction::East:
+                if (position.first < boardX - 1) {
+                    position.first++;
+                }
                 break;
             case Direction::West:
-                newPosition.first--;
-                position = newPosition;
+                if (position.first > 0) {
+                    position.first--;
+                }
                 break;
         }
-        position = newPosition;
-
     }
 }
 
@@ -58,41 +61,38 @@ string Crawler::toString() {
     return ss.str();
 }
 
-bool Crawler::isWayBlocked() {
-
+bool Crawler::isWayBlocked(const Board& board) {
+    int boardX = board.getBoardX();
+    int boardY = board.getBoardY();
     switch (direction) {
         case Direction::North:
-            if (position.second == 0){
+            if (position.second == 0)
+            {
                 return true;
             }
             break;
-        case Direction::South: if (position.second == 9){
+        case Direction::South:
+            if ( position.second == boardY - 1)
+            {
                 return true;
             }
             break;
-        case Direction::East: if (position.first == 9){
+        case Direction::East:
+            if ( position.first == boardX - 1)
+            {
                 return true;
             }
             break;
-        case Direction::West: if (position.first == 0){
+        case Direction::West:
+            if ( position.first == 0)
+            {
                 return true;
             }
             break;
         default:
             return false;
-
     }
     return false;
 }
-
-
-
-
-
-
-
-
-
-
 
 

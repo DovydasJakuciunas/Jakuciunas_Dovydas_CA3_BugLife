@@ -17,9 +17,6 @@ private:
 
 protected:
 
-
-
-
     //Function 2
     void displayAllBugs();
     //Function 3
@@ -34,24 +31,22 @@ public:
 
     //Printing Board
     void printBoard();
-
     void readFromFile();
-
-    void simulateTap();
-
     explicit Board(vector<Bug*> bug_vector);
 
     //Function 1 _ Simulate Board
-    static Board initialiseBoard();
+    Board initialiseBoard();
     //Function 2 _ Simulate Display All Bugs
     void simulateDisplayAllBugs();
     //Function 3 _ Simulate Display Bug by ID
     void simulateDisplayBugById();
     //Function 4 _ Simulate Tapping the Board
-    void simulateInitialiseBoard();
+    void simulateTap();
 
 
 
+    int getBoardX() const;
+    int getBoardY() const;
 };
 
 

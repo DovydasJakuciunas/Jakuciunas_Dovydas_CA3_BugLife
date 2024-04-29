@@ -30,7 +30,7 @@ string Hopper::toString() {
     return ss.str();
 }
 
-bool Hopper::isWayBlocked() {
+bool Hopper::isWayBlocked(int boardX, int boardY) {
 
 
     switch (direction) {

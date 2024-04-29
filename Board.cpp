@@ -17,13 +17,13 @@ using namespace std;
 
 void Board::tap() {
     cout<<"Before Tap"<< endl;
-    displayAllBugs();
+    printBoard();
     cout<<endl;
     for (Bug* bug : bug_vector) {
         bug->move(width, height);
     }
     cout<<"After Tap"<< endl;
-    displayAllBugs();
+    printBoard();
     cout<<endl;
 }
 void Board::simulateTap() {
@@ -36,7 +36,7 @@ this->bug_vector = std::move(bug_vector);
 
 
 
-//Function 1
+//Function 2
 void Board::displayAllBugs() {
     for(Bug* bug: bug_vector)
     {
@@ -47,7 +47,7 @@ void Board::simulateDisplayAllBugs() {
     displayAllBugs();
 }
 
-//Function 2
+//Function 3
 void Board::displayBugById() {
     cout << "Whats the ID of the Bug?" << endl;
     int id;
@@ -80,6 +80,9 @@ Direction setDirection(int num) {
 
 //Reading From File
 void Board::readFromFile() {
+    bug_vector.clear();
+
+
     ifstream fin("bugs.txt");
 
     if(fin)
@@ -146,6 +149,7 @@ void Board::readFromFile() {
 
 //Function 1
 Board Board::initialiseBoard(){
+    cout << "simulateInitialiseBoard() function called" << endl;
     displayChoiceOfBoard();
     int choice = 0;
     cout << "Please enter your choice: ";
@@ -159,12 +163,13 @@ Board Board::initialiseBoard(){
     if (choice == 1)
     {
         cout << "Default Board Size" << endl;
+        width =10;
+        height = 10;
+        readFromFile();
         return {};
     }
     else
     {
-        int height = 0;
-        int width = 0;
 
         cout << "Width: ";
         cin >> width;
@@ -172,17 +177,18 @@ Board Board::initialiseBoard(){
         cout << "Height: ";
         cin >> height;
 
+        readFromFile();
+
         return {width, height};
     }
+
 
 }
 void displayChoiceOfBoard() {
     cout << "1. Default Board Size"<< endl;
     cout << "2. Custom Board Size"<< endl;
 }
-void Board::simulateInitialiseBoard() {
-    *this = initialiseBoard();
-}
+
 
 //Constructors
 Board::Board() {
@@ -197,36 +203,44 @@ Board::Board(int width, int height) {
 
 //Printing The Board
 void Board::printBoard() {
-    for (int i = 0; i < height; ++i) //Prints Vertical Lines {
-        {
-        for (int j = 0; j < width; ++j) //Prints horizontal Lines
+    for (int i = 0; i < height; ++i)//Print Vertical Lines
+         {
+        for (int j = 0; j < width; ++j)//Print Horizontal Lines
             {
-                cout<<"+---";
-            }
+            cout<<"+------";
+        }
         cout<<"+"<<endl;
-        cout<<"|";
         for (int j = 0; j< width; ++j){
+            cout<<"|";
             bool isBug = false;
-            for(Bug* bug: bug_vector){
+
+            for(Bug* bug: bug_vector){                  //Adds Bug if Within the Cell
                 if(bug->getPosition().first == j && bug->getPosition().second == i){
                     cout<<bug->getType()<<","<<bug->getID();
                     isBug = true;
                 }
             }
             if (!isBug){
-                cout<<"   ";
+                cout<<"      "; //Prints 6 spaces for empty cells
             }
-            cout<<"|";
         }
-        cout<<endl;
+        cout<<"|"<<endl;
     }
     for(int j = 0; j < width; j++) {
-        cout << "+---";
+        cout << "+------";
     }
     cout << "+" << endl;
-
-
 }
+
+//getBoardX and BoardY
+int Board::getBoardX() const {
+    return width;
+}
+
+int Board::getBoardY() const {
+    return height;
+}
+
 
 
 

@@ -5,7 +5,8 @@
 #include "Crawler.h"
 #include "Hopper.h"
 
-void readFromFile();
+using namespace std;
+
 Direction setDirection(int num);
 int mainMenu();
 
@@ -29,10 +30,10 @@ void Commands(Board* board) {
         int command = mainMenu();
         switch (command) {
             case 1:
-
-                board->simulateInitialiseBoard();
+                board->initialiseBoard();
                 break;
             case 2:
+
                 board->simulateDisplayAllBugs();
                 break;
             case 3:
