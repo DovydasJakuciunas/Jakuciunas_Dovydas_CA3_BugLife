@@ -72,5 +72,20 @@ list<pair<int, int>> Bug::getPath() {
     return path;
 }
 
+bool Bug::isAlive() {
+    return alive;
+}
+
+int Bug::getSize() {
+    return size;
+}
+
+void Bug::setAlive(bool b) {
+    alive = b;
+}
+void Bug::setSize(int s) {
+    size = s;
+}
+
 
 #include "Bug.h"

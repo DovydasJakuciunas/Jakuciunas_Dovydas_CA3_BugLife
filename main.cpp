@@ -48,6 +48,9 @@ void Commands(Board* board) {
             case 6:
                 board->displayAllCells();
                 break;
+            case 7:
+                board->runSimulation();
+                break;
             case 8:
                 cout<< "Thank you for Using the BugLife Project"<< endl;
                 board->writeToFile();

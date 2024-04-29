@@ -48,13 +48,15 @@ public:
     void writeToFile();
     //Function 7 _ Print All Cells
     void displayAllCells();
-
+    //Function 8 _ Run Simulation
+    void runSimulation();
 
     int getBoardX() const;
     int getBoardY() const;
 
 
-
+    void bugFightAndEat();
+    void removeDeadBug();
 };
 
 

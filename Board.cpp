@@ -9,6 +9,7 @@
 #include "Board.h"
 #include "Crawler.h"
 #include "Hopper.h"
+#include <algorithm>
 
 void displayChoiceOfBoard();
 
@@ -20,9 +21,58 @@ void Board::tap() {
     for (Bug* bug : bug_vector) {
         bug->move(width, height);
     }
+    bugFightAndEat();
     printBoard();
     cout<<endl;
 }
+
+void Board::bugFightAndEat() {
+    for (int i = 0; i < height; ++i) {
+        for (int j = 0; j < width; ++j) {
+            vector<Bug*> oneCellBugs;
+            for (Bug* bug: bug_vector) {
+                if (bug->getPosition().first == j && bug->getPosition().second == i && bug->isAlive()) {    //Check if there are bugs in the cell
+                    oneCellBugs.push_back(bug);
+                }
+            }
+            if (oneCellBugs.size() > 1){
+                Bug* maxBug = *max_element(oneCellBugs.begin(), oneCellBugs.end(), [](Bug* a, Bug* b) { return a->getSize() < b->getSize(); }); //Finding the biggest bug
+                vector<Bug*> maxBugs;
+                for(Bug* bug: oneCellBugs){
+                    if(bug->getSize() == maxBug->getSize()){
+                        maxBugs.push_back(bug);
+                    }
+                    else
+                    {
+                        bug->setAlive(false);
+                        maxBug->setSize(maxBug->getSize() + bug->getSize());
+                    }
+                }
+                if(maxBugs.size() > 1){
+                    int chosenBug = rand() % maxBugs.size();
+                    for (int k = 0; k < maxBugs.size(); ++k) {
+                        if (k != chosenBug){
+                            maxBugs[k]->setAlive(false);
+                            maxBug->setSize(maxBug->getSize() + maxBugs[k]->getSize());
+                        }
+                    }
+                }
+            }
+        }
+    }
+    removeDeadBug();
+}
+
+void Board::removeDeadBug() {
+    bug_vector.erase(std::remove_if(bug_vector.begin(), bug_vector.end(), [](Bug* bug) {
+        bool isDead = !bug->isAlive();
+        if (isDead) {
+            delete bug;
+        }
+        return isDead;
+    }), bug_vector.end());
+}
+
 void Board::simulateTap() {
     tap();
 }
@@ -288,6 +338,10 @@ int Board::getBoardX() const {
 
 int Board::getBoardY() const {
     return height;
+}
+
+void Board::runSimulation() {
+
 }
 
 

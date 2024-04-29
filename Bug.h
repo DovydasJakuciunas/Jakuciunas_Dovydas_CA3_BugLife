@@ -46,6 +46,11 @@ public:
     char getType() const;
     int getID() const;
     list<pair<int,int>> getPath();
+    bool isAlive();
+    int getSize();
+
+    void setSize(int s);
+    void setAlive(bool b);
 };
 
 #endif //JAKUCIUNAS_DOVYDAS_CA3_BUGLIFE_BUG_H
