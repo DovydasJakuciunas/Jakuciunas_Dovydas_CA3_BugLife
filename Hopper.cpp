@@ -5,7 +5,6 @@
 #include <sstream>
 #include "Hopper.h"
 
-
 Hopper::Hopper(int bugId, pair<int, int> position, Direction dir, int bugSize, int hopLength) : Bug('H', bugId,
                                                                                                     position, dir,
                                                                                                     bugSize){
@@ -30,15 +29,13 @@ string Hopper::toString() {
     return ss.str();
 }
 
-
-
 void Hopper::move(int BoardX, int BoardY) {
     int directionsChecked = 0;
     bool moved = false;
 
     while (!moved)
     {
-        if (directionsChecked == 12)
+        if (directionsChecked == 6)
         {
             alive = false;
             break;
@@ -116,7 +113,3 @@ void Hopper::move(int BoardX, int BoardY) {
     }
     path.push_back(position);
 }
-
-
-
-

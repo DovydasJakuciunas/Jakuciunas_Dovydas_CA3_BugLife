@@ -45,7 +45,6 @@ public:
     pair<int, int> getPosition();
     char getType() const;
     int getID() const;
-    list<pair<int,int>> getPath();
     bool isAlive();
     int getSize();
 

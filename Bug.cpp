@@ -18,10 +18,9 @@ string Bug::toString() {
 
 }
 
-
 void Bug::changeDirection() {
     random_device rd; // obtain a random number from hardware
-    mt19937 gen(rd()); // seed the generator
+    mt19937 gen(rd()); // Mersenne Twister pseudo-random number generator of 32-bit number
     uniform_int_distribution<> distr(1, 4); // define the range
 
     int randomValue = distr(gen);
@@ -49,7 +48,6 @@ pair<int, int> Bug::getPosition() {
     return this->position;
 }
 
-
 char Bug::getType() const {
     return this-> bugType;
 }
@@ -68,10 +66,6 @@ string Bug::printLifeHistory() {
     return oss.str();
 }
 
-list<pair<int, int>> Bug::getPath() {
-    return path;
-}
-
 bool Bug::isAlive() {
     return alive;
 }
@@ -83,6 +77,7 @@ int Bug::getSize() {
 void Bug::setAlive(bool b) {
     alive = b;
 }
+
 void Bug::setSize(int s) {
     size = s;
 }

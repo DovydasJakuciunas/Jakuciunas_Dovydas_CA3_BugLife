@@ -15,10 +15,6 @@ public :
     void move(int boardX, int boardY) override;
     string toString() override;
 
-
-    void setPosition(pair<int, int> pair1);
-
-    Direction getDirection();
 };
 
 

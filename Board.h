@@ -10,6 +10,7 @@
 #include "Bug.h"
 
 class Board {
+
 private:
     vector<Bug*> bug_vector;
     vector<Bug*> deadBugs;
@@ -18,11 +19,8 @@ private:
 
 protected:
 
-    //Function 2
     void displayAllBugs();
-    //Function 3
     void displayBugById();
-    //Function 4
     void tap();
 
 public:
@@ -51,10 +49,6 @@ public:
     void displayAllCells();
     //Function 8 _ Run Simulation
     void runSimulation();
-
-    int getBoardX() const;
-    int getBoardY() const;
-
 
     void bugFightAndEat();
     void removeDeadBug();

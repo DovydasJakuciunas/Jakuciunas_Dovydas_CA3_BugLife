@@ -17,7 +17,6 @@ public:
     void move(int boardX, int boardY) override;
     string toString() override;
 
-
 };
 
 
