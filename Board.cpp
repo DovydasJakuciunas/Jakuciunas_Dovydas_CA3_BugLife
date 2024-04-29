@@ -16,13 +16,10 @@ using namespace std;
 
 
 void Board::tap() {
-    cout<<"Before Tap"<< endl;
-    printBoard();
-    cout<<endl;
+   cout<<"****Tapping Board****"<<endl;
     for (Bug* bug : bug_vector) {
         bug->move(width, height);
     }
-    cout<<"After Tap"<< endl;
     printBoard();
     cout<<endl;
 }
@@ -216,7 +213,7 @@ void Board::printBoard() {
 
             for(Bug* bug: bug_vector){                  //Adds Bug if Within the Cell
                 if(bug->getPosition().first == j && bug->getPosition().second == i){
-                    cout<<bug->getType()<<","<<bug->getID();
+                    cout<<bug->getType()<<"-"<<bug->getID();
                     isBug = true;
                 }
             }

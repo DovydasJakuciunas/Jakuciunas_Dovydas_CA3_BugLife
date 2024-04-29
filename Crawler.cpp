@@ -8,42 +8,78 @@ using namespace std;
 
 
 
-void Crawler::move(int boardX, int boardY) {
-    if (isWayBlocked(Board(boardX, boardY))) {
-        changeDirection();
-    } else {
+void Crawler::move(int BoardX, int BoardY) {
+    bool moved = false;
+    int directionsChecked = 0;
+    
+    while (!moved)
+    {
+        if (directionsChecked == 4)
+        {
+            alive = false;
+            break;
+        }
         switch (direction) {
             case Direction::North:
-                if (position.second > 0) {
-                    position.second--;
+                if (position.second > 0)
+                {
+                    position.second -= 1;
+                    moved = true;
+                }
+                else
+                {
+                    changeDirection();
+                    directionsChecked++;
                 }
                 break;
             case Direction::South:
-                if (position.second < boardY - 1) {
-                    position.second++;
+                if (position.second < BoardY - 1)
+                {
+                    position.second += 1;
+                    moved = true;
                 }
-                break;
-            case Direction::East:
-                if (position.first < boardX - 1) {
-                    position.first++;
+                else
+                {
+                    changeDirection();
+                    directionsChecked++;
                 }
                 break;
             case Direction::West:
-                if (position.first > 0) {
-                    position.first--;
+                if (position.first > 0)
+                {
+                    position.first -= 1;
+                    moved = true;
+                }
+                else
+                {
+                    changeDirection();
+                    directionsChecked++;
+                }
+                break;
+            case Direction::East:
+                if (position.first < BoardX - 1)
+                {
+                    position.first += 1;
+                    moved = true;
+                }
+                else
+                {
+                    changeDirection();
+                    directionsChecked++;
                 }
                 break;
         }
     }
+
 }
 
-Crawler::Crawler(int bugId1, pair<int, int> position, Direction dir1, int bugSize1) : Bug('C', bugId1,
-                                                                                          position, dir1,
-                                                                                          bugSize1) {
-    this->id = bugId1;
+Crawler::Crawler(int bugId, pair<int, int> position, Direction dir, int bugSize) : Bug('C', bugId,
+                                                                                          position, dir,
+                                                                                          bugSize) {
+    this->id = bugId;
     this->position = position;
-    this->direction = dir1;
-    this-> size = bugSize1;
+    this->direction = dir;
+    this-> size = bugSize;
 
 }
 
@@ -61,38 +97,18 @@ string Crawler::toString() {
     return ss.str();
 }
 
-bool Crawler::isWayBlocked(const Board& board) {
-    int boardX = board.getBoardX();
-    int boardY = board.getBoardY();
-    switch (direction) {
-        case Direction::North:
-            if (position.second == 0)
-            {
-                return true;
-            }
-            break;
-        case Direction::South:
-            if ( position.second == boardY - 1)
-            {
-                return true;
-            }
-            break;
-        case Direction::East:
-            if ( position.first == boardX - 1)
-            {
-                return true;
-            }
-            break;
-        case Direction::West:
-            if ( position.first == 0)
-            {
-                return true;
-            }
-            break;
-        default:
-            return false;
-    }
-    return false;
+
+
+void Crawler::setPosition(pair<int, int> pair) {
+    position = pair;
+
 }
+
+Direction Crawler::getDirection() {
+     return direction;
+
+}
+
+
 
 

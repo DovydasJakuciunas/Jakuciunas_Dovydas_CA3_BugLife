@@ -45,7 +45,7 @@ void Commands(Board* board) {
             case 5:
                 board->printBoard();
                 break;
-            case 9:
+            case 8:
                 cout<< "Thank you for Using the BugLife Project"<< endl;
                 return;
             default:
@@ -61,7 +61,7 @@ int mainMenu() {
     cout<<"Type 2: Display All Bugs " << endl;
     cout<<"Type 3: Display Bug by ID"<<endl;
     cout<<"Type 4: Tap The Board"<<endl;
-    cout<<"Type 9: Exit Project"<<endl;
+    cout<<"Type 8: Exit Project"<<endl;
 
     int usersChoice;
     cin>> usersChoice;

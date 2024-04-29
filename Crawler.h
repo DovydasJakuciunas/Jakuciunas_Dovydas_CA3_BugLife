@@ -14,7 +14,11 @@ public :
     Crawler(int bugId1, pair<int, int> position, Direction dir1, int bugSize1);
     void move(int boardX, int boardY) override;
     string toString() override;
-    bool isWayBlocked(const Board& board);
+
+
+    void setPosition(pair<int, int> pair1);
+
+    Direction getDirection();
 };
 
 

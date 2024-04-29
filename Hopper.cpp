@@ -30,45 +30,25 @@ string Hopper::toString() {
     return ss.str();
 }
 
-bool Hopper::isWayBlocked(int boardX, int boardY) {
 
-
-    switch (direction) {
-        case Direction::North:
-            if (position.second == 0){
-                return false;
-            }
-            else{return true;}
-        case Direction::South: if (position.second == 9){
-                return false;
-            }
-            else{return true;}
-        case Direction::East: if (position.first == 9){
-                return false;
-            }
-            else {return true;}
-        case Direction::West: if (position.first == 0){
-                return false;
-            }
-            else{ return true;}
-
-    }
-
-}
 
 void Hopper::move(int BoardX, int BoardY) {
-    //print out it moved
-//    cout << "Hopper moved" << endl;
-
+    int directionsChecked = 0;
     bool moved = false;
 
     while (!moved)
     {
+        if (directionsChecked == 4)
+        {
+            alive = false;
+            break;
+        }
         switch (Direction(direction)) {
             case Direction::North:
                 if (position.second == 0 )
                 {
                     changeDirection();
+                    directionsChecked++;
                 }
                 else if (position.second - hopLength >= 0)
                 {
@@ -85,6 +65,7 @@ void Hopper::move(int BoardX, int BoardY) {
                 if (position.second == BoardY - 1)
                 {
                     changeDirection();
+                    directionsChecked++;
                 }
                 else if (position.second + hopLength <= BoardY - 1)
                 {
@@ -101,6 +82,7 @@ void Hopper::move(int BoardX, int BoardY) {
                 if (position.first == 0)
                 {
                     changeDirection();
+                    directionsChecked++;
                 }
                 else if (position.first - hopLength >= 0)
                 {
@@ -117,6 +99,7 @@ void Hopper::move(int BoardX, int BoardY) {
                 if (position.first == BoardX - 1)
                 {
                     changeDirection();
+                    directionsChecked++;
                 }
                 else if (position.first + hopLength <= BoardX - 1)
                 {

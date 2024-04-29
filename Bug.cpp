@@ -6,6 +6,7 @@
 #include <sstream>
 #include <utility>
 #include "Bug.h"
+#include <random>
 
 using namespace std;
 
@@ -18,18 +19,27 @@ string Bug::toString() {
 
 
 void Bug::changeDirection() {
-    srand(time(nullptr)); // use current time as seed for random generator
-    int randomValue = rand() % 4 + 1; // generates a random number between 1 and 4
+    random_device rd; // obtain a random number from hardware
+    mt19937 gen(rd()); // seed the generator
+    uniform_int_distribution<> distr(0, 3); // define the range
+
+    int randomValue = distr(gen);
 
     switch (randomValue) {
-        case 1:
+        case 0:
             direction = Direction::North;
-        case 2:
+            break;
+        case 1:
             direction = Direction::East;
-        case 3:
+            break;
+        case 2:
             direction = Direction::South;
-            case 4:
-                direction = Direction::West;
+            break;
+        case 3:
+            direction = Direction::West;
+            break;
+        default:
+            break;
     }
 
 }
