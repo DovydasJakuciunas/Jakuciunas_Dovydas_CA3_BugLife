@@ -45,6 +45,9 @@ void Commands(Board* board) {
             case 5:
                 board->displayLifeHistoryOfAllBugs();
                 break;
+            case 6:
+                board->displayAllCells();
+                break;
             case 8:
                 cout<< "Thank you for Using the BugLife Project"<< endl;
                 board->writeToFile();

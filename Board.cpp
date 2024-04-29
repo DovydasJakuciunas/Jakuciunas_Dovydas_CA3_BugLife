@@ -192,6 +192,7 @@ void Board::displayLifeHistoryOfAllBugs() {
         cout<<bug->printLifeHistory();
     }
 }
+
 //Function 6
 void Board::writeToFile() {
     ofstream file("bug_life_history.out");
@@ -211,6 +212,29 @@ void Board::writeToFile() {
 
     file.close();
     cout << "File Written Successfully" << endl;
+
+}
+
+//Function 7
+void Board::displayAllCells() {
+    for (int i = 0; i < height; ++i) {
+        for (int j = 0; j < width; ++j) {
+            string cellCount;
+            //Check if bugs are in the Cell
+            for (Bug* bug: bug_vector) {
+                if (bug->getPosition().first == j && bug->getPosition().second == i) {
+                    cellCount += bug->toString();
+                }
+            }
+            //If there are no bugs in the Cell
+            if (cellCount.empty()) {
+                cout << "Cell: " << j << "," << i << " is Empty" << endl;
+            } else {
+                cout << "Cell: " << j << "," << i << " has " << cellCount << endl;
+            }
+        }
+
+    }
 
 }
 
@@ -265,6 +289,8 @@ int Board::getBoardX() const {
 int Board::getBoardY() const {
     return height;
 }
+
+
 
 
 

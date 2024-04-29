@@ -34,18 +34,20 @@ public:
     void readFromFile();
     explicit Board(vector<Bug*> bug_vector);
 
-    //Function 1 _ Simulate Board
+    //Function 1 _ Board
     Board initialiseBoard();
-    //Function 2 _ Simulate Display All Bugs
+    //Function 2 _ Display All Bugs
     void simulateDisplayAllBugs();
-    //Function 3 _ Simulate Display Bug by ID
+    //Function 3 _ Display Bug by ID
     void simulateDisplayBugById();
-    //Function 4 _ Simulate Tapping the Board
+    //Function 4 _ Tapping the Board
     void simulateTap();
     //Function 5 _ Display Life History of All Bugs
     void displayLifeHistoryOfAllBugs();
     //Function 6 _ Write to Files
     void writeToFile();
+    //Function 7 _ Print All Cells
+    void displayAllCells();
 
 
     int getBoardX() const;
