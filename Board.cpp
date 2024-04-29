@@ -186,6 +186,12 @@ void displayChoiceOfBoard() {
     cout << "2. Custom Board Size"<< endl;
 }
 
+//Function 5
+void Board::displayLifeHistoryOfAllBugs() {
+    for (Bug* bug : bug_vector) {
+        bug->printLifeHistory();
+    }
+}
 
 //Constructors
 Board::Board() {

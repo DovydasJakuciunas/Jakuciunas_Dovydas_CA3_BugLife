@@ -42,11 +42,14 @@ public:
     void simulateDisplayBugById();
     //Function 4 _ Simulate Tapping the Board
     void simulateTap();
-
-
+    //Function 5 _ Display Life History of All Bugs
+    void displayLifeHistoryOfAllBugs();
 
     int getBoardX() const;
     int getBoardY() const;
+
+
+
 };
 
 

@@ -114,6 +114,7 @@ void Hopper::move(int BoardX, int BoardY) {
                 break;
         }
     }
+    path.push_back(position);
 }
 
 

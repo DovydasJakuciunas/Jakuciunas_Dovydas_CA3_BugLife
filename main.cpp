@@ -43,7 +43,7 @@ void Commands(Board* board) {
                 board->simulateTap();
                 break;
             case 5:
-                board->printBoard();
+                board->displayLifeHistoryOfAllBugs();
                 break;
             case 8:
                 cout<< "Thank you for Using the BugLife Project"<< endl;
@@ -61,6 +61,7 @@ int mainMenu() {
     cout<<"Type 2: Display All Bugs " << endl;
     cout<<"Type 3: Display Bug by ID"<<endl;
     cout<<"Type 4: Tap The Board"<<endl;
+    cout<<"Type 5. Display Life History of all Bugs (path taken)"<<endl;
     cout<<"Type 8: Exit Project"<<endl;
 
     int usersChoice;

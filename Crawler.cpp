@@ -70,7 +70,7 @@ void Crawler::move(int BoardX, int BoardY) {
                 break;
         }
     }
-
+    path.push_back(position);
 }
 
 Crawler::Crawler(int bugId, pair<int, int> position, Direction dir, int bugSize) : Bug('C', bugId,

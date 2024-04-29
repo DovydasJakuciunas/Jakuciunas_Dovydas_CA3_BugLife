@@ -7,6 +7,7 @@
 
 #include <utility>
 #include <string>
+#include <list>
 
 using namespace std;
 
@@ -27,7 +28,7 @@ protected:
     Direction direction;
     int size;
     bool alive;
-    //list<std::pair<int, int>> path;
+    list<pair<int, int>> path;
 
 public:
     Bug(char type, int bugId, pair<int, int> position, Direction dir, int bugSize);
@@ -37,12 +38,14 @@ public:
     virtual string toString();
     virtual void changeDirection();
 
-    //Function 3
+
+    void printLifeHistory();
 
     //Getter
     pair<int, int> getPosition();
     char getType() const;
     int getID() const;
+    list<pair<int,int>> getPath();
 };
 
 #endif //JAKUCIUNAS_DOVYDAS_CA3_BUGLIFE_BUG_H

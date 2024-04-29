@@ -7,6 +7,7 @@
 #include <utility>
 #include "Bug.h"
 #include <random>
+#include <iostream>
 
 using namespace std;
 
@@ -55,6 +56,18 @@ char Bug::getType() const {
 
 int Bug::getID() const {
     return this->id;
+}
+
+void Bug::printLifeHistory() {
+     cout<< id << " " << (bugType == 'C' ? "Crawler" : "Hopper") << " Path: ";
+    for (const auto& pos : path) {
+        cout << "(" << pos.first << "," << pos.second << ") ";   //Print the path of the bug
+    }
+    cout << (alive ? " Alive!" : " Eaten") << std::endl;    //Print if the bug is alive or eaten
+}
+
+list<pair<int, int>> Bug::getPath() {
+    return path;
 }
 
 
