@@ -12,6 +12,7 @@
 class Board {
 private:
     vector<Bug*> bug_vector;
+    vector<Bug*> deadBugs;
     int width{};
     int height{};
 
@@ -57,6 +58,8 @@ public:
 
     void bugFightAndEat();
     void removeDeadBug();
+
+
 };
 
 

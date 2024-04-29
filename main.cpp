@@ -70,6 +70,8 @@ int mainMenu() {
     cout<<"Type 3: Display Bug by ID"<<endl;
     cout<<"Type 4: Tap The Board"<<endl;
     cout<<"Type 5. Display Life History of all Bugs (path taken)"<<endl;
+    cout<<"Type 6: Display all Cells listing their Bugs"<<endl;
+    cout<<"Type 7: Run Simulation"<<endl;
     cout<<"Type 8: Exit Project"<<endl;
 
     int usersChoice;

@@ -64,14 +64,16 @@ void Board::bugFightAndEat() {
 }
 
 void Board::removeDeadBug() {
-    bug_vector.erase(std::remove_if(bug_vector.begin(), bug_vector.end(), [](Bug* bug) {
+    bug_vector.erase(std::remove_if(bug_vector.begin(), bug_vector.end(), [this](Bug* bug) {
         bool isDead = !bug->isAlive();
         if (isDead) {
-            delete bug;
+            deadBugs.push_back(bug);
         }
         return isDead;
     }), bug_vector.end());
 }
+
+
 
 void Board::simulateTap() {
     tap();
@@ -259,11 +261,16 @@ void Board::writeToFile() {
     for (Bug* bug : bug_vector) {
         file << bug->printLifeHistory() << endl;
     }
+    for (Bug* bug : deadBugs) {
+        file << bug->printLifeHistory() << endl;
+    }
 
     file.close();
     cout << "File Written Successfully" << endl;
 
 }
+
+
 
 //Function 7
 void Board::displayAllCells() {
@@ -341,6 +348,17 @@ int Board::getBoardY() const {
 }
 
 void Board::runSimulation() {
+    int i = 0;
+    while (bug_vector.size() > 1)
+    {
+        cout << "Round: " << i << endl;
+        tap();
+        i++;
+    }
+    cout << "Rounds: " << i << endl;
+    printBoard();
+    cout << "Winner: " << bug_vector[0]->getID() << endl;
+    writeToFile();
 
 }
 
