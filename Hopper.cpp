@@ -38,7 +38,7 @@ void Hopper::move(int BoardX, int BoardY) {
 
     while (!moved)
     {
-        if (directionsChecked == 4)
+        if (directionsChecked == 12)
         {
             alive = false;
             break;

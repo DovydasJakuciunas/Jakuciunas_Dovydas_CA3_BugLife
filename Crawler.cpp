@@ -14,7 +14,7 @@ void Crawler::move(int BoardX, int BoardY) {
     
     while (!moved)
     {
-        if (directionsChecked == 4)
+        if (directionsChecked == 6)
         {
             alive = false;
             break;
